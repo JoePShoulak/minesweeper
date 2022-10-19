@@ -2,7 +2,7 @@ import { Board } from "./lib/Board.js";
 import { Tile } from "./lib/Tile.js";
 
 let chosenBoardSize;
-//if on mobile
+//if on mobile FIXME
 if (Math.min(window.screen.width, window.screen.height) < 768) {
     chosenBoardSize = 6 // small
 } else {
