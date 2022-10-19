@@ -1,8 +1,15 @@
 import { Board } from "./lib/Board.js";
 import { Tile } from "./lib/Tile.js";
 
-const BOARD_SIZE = 13;
-const NUMBER_OF_MINES = Math.floor(13**2/5);
+let chosenBoardSize;
+//if on mobile
+if (Math.min(window.screen.width, window.screen.height) < 768) {
+    chosenBoardSize = 6 // small
+} else {
+    chosenBoardSize = 13 // large
+}
+const BOARD_SIZE = chosenBoardSize;
+const NUMBER_OF_MINES = Math.floor(chosenBoardSize**2/5);
 
 const board = new Board(BOARD_SIZE, NUMBER_OF_MINES);
 const minesLeftText = document.querySelector('[data-mine-count]');
