@@ -8,8 +8,9 @@ if (Math.min(window.screen.width, window.screen.height) < 768) {
 } else {
     chosenBoardSize = 13 // large
 }
+const DIFFICULTY  = .15 // 15% of tiles are mines. .2 seems pretty tough
 const BOARD_SIZE = chosenBoardSize;
-const NUMBER_OF_MINES = Math.floor(chosenBoardSize**2/5);
+const NUMBER_OF_MINES = Math.floor(chosenBoardSize**2*.15);
 
 const board = new Board(BOARD_SIZE, NUMBER_OF_MINES);
 const minesLeftText = document.querySelector('[data-mine-count]');
