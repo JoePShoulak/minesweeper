@@ -2,7 +2,7 @@ import { Board } from "./lib/Board.js";
 import { Tile } from "./lib/Tile.js";
 
 const BOARD_SIZE = 13;
-const NUMBER_OF_MINES = 4;
+const NUMBER_OF_MINES = Math.floor(13**2/5);
 
 const board = new Board(BOARD_SIZE, NUMBER_OF_MINES);
 const minesLeftText = document.querySelector('[data-mine-count]');
