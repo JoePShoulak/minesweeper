@@ -1,16 +1,13 @@
 import { Board } from "./lib/Board.js";
 import { Tile } from "./lib/Tile.js";
 
-let chosenBoardSize;
-//if on mobile FIXME
-if (Math.min(window.screen.width, window.screen.height) < 768) {
-    chosenBoardSize = 6 // small
-} else {
-    chosenBoardSize = 13 // large
-}
+const onMobile = () => Math.min(window.screen.width, window.screen.height) < 768;
+// FIXME if on mobile 
 const DIFFICULTY  = .15 // 15% of tiles are mines. .2 seems pretty tough
-const BOARD_SIZE = chosenBoardSize;
-const NUMBER_OF_MINES = Math.floor(chosenBoardSize**2*.15);
+const BOARD_SIZE = onMobile() ? 6 : 13;
+// TODO: Scale tile-text with tile-size
+const TILE_SIZE = 60; // default was 60px
+const NUMBER_OF_MINES = Math.floor(BOARD_SIZE**2*DIFFICULTY);
 
 const board = new Board(BOARD_SIZE, NUMBER_OF_MINES);
 const minesLeftText = document.querySelector('[data-mine-count]');
@@ -67,4 +64,5 @@ const checkGameEnd = (board) => {
 }
 
 board.element.style.setProperty('--size', BOARD_SIZE);
+board.element.style.setProperty('--tile-size', `${TILE_SIZE}px`);
 minesLeftText.textContent = NUMBER_OF_MINES;
